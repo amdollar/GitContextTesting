@@ -1,0 +1,13 @@
+name: hello-world
+on: push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    container: node:14.16.1
+    steps:
+      - name: Say Hello
+        run: echo "Hello World!"
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: node index.js
+      - run: echo "End of program."
