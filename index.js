@@ -6,6 +6,7 @@ const path = require("path");
 
 (async () => {
   const repo = await nodegit.Repository.open(path.resolve(__dirname, "https://github.com/amdollar/GitContextTesting.git"));
+  console.log(__dirname);
   console.log('repo : '+ repo)
   const commit = await repo.getCommit("528cebde981ae1a08c1f14e3c4fcf67d5ce5ba1e");
   console.log('commit : ' +commit);
