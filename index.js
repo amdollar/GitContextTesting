@@ -1,27 +1,31 @@
-const nodegit = require("nodegit");
-const path = require("path");
+require('child_process').exec('git rev-parse HEAD', function(err, stdout) {
+    console.log('Last commit hash on this branch is:', stdout);
+});
 
-// This example opens a certain file, `README.md`, at a particular commit,
-// and prints the first 10 lines as well as some metadata.
+// const nodegit = require("nodegit");
+// const path = require("path");
 
-async function test (){
-  const repo = await nodegit.Repository.open(path.resolve(__dirname, "https://github.com/amdollar/GitContextTesting.git"));
-  console.log(__dirname);
-  console.log('repo : '+ repo)
-  const commit = await repo.getCommit("528cebde981ae1a08c1f14e3c4fcf67d5ce5ba1e");
-  console.log('commit : ' +commit);
-  const entry = await commit.getEntry("index.js");
-  console.log('entry: ' +entry);
-  const blob = await entry.getBlob();
+// // This example opens a certain file, `README.md`, at a particular commit,
+// // and prints the first 10 lines as well as some metadata.
+
+// async function test (){
+//   const repo = await nodegit.Repository.open(path.resolve(__dirname, "https://github.com/amdollar/GitContextTesting.git"));
+//   console.log(__dirname);
+//   console.log('repo : '+ repo)
+//   const commit = await repo.getCommit("528cebde981ae1a08c1f14e3c4fcf67d5ce5ba1e");
+//   console.log('commit : ' +commit);
+//   const entry = await commit.getEntry("index.js");
+//   console.log('entry: ' +entry);
+//   const blob = await entry.getBlob();
   
-  console.log(entry.name(), entry.sha(), blob.rawsize() + "b");
-  console.log("========================================================\n\n");
-  const firstTenLines = blob.toString().split("\n").slice(0, 10).join("\n");
-  console.log(firstTenLines);
-  console.log("...");
-};
+//   console.log(entry.name(), entry.sha(), blob.rawsize() + "b");
+//   console.log("========================================================\n\n");
+//   const firstTenLines = blob.toString().split("\n").slice(0, 10).join("\n");
+//   console.log(firstTenLines);
+//   console.log("...");
+// };
 
-test();
+// test();
 
 
 // var Git = require( 'nodegit' );
