@@ -1,4 +1,4 @@
-const nodegit = require("../");
+const nodegit = require("nodegit");
 const path = require("path");
 
 // This example opens a certain file, `README.md`, at a particular commit,
