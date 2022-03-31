@@ -4,7 +4,7 @@ const path = require("path");
 // This example opens a certain file, `README.md`, at a particular commit,
 // and prints the first 10 lines as well as some metadata.
 
-(async () => {
+async function test (){
   const repo = await nodegit.Repository.open(path.resolve(__dirname, "https://github.com/amdollar/GitContextTesting.git"));
   console.log(__dirname);
   console.log('repo : '+ repo)
@@ -19,7 +19,9 @@ const path = require("path");
   const firstTenLines = blob.toString().split("\n").slice(0, 10).join("\n");
   console.log(firstTenLines);
   console.log("...");
-})();
+};
+
+test();
 
 
 // var Git = require( 'nodegit' );
