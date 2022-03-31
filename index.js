@@ -6,8 +6,11 @@ const path = require("path");
 
 (async () => {
   const repo = await nodegit.Repository.open(path.resolve(__dirname, "../.git"));
+  console.log('repo : '+ repo)
   const commit = await repo.getCommit("528cebde981ae1a08c1f14e3c4fcf67d5ce5ba1e");
+  console.log('commit : ' +commit);
   const entry = await commit.getEntry("index.js");
+  console.log('entry: ' +entry);
   const blob = await entry.getBlob();
   
   console.log(entry.name(), entry.sha(), blob.rawsize() + "b");
