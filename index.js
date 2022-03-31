@@ -1,4 +1,4 @@
-var fs = require('fs');
+// var fs = require('fs');
 const fs = fsWithCallbacks.promises;
 
 const getGitId = async () => {
