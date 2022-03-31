@@ -9,8 +9,11 @@ const getGitId = async () => {
   const refPath = '.git/' + gitId.substring(5).trim();
   return await fs.readFile(refPath, 'utf8');
 };
-
+async function test(){
 const gitId = await getGitId();
+}
+
+test();
 console.log(gitId)
 console.log('here');
 
