@@ -1,21 +1,21 @@
-// var fs = require('fs');
-const fs = fsWithCallbacks.promises;
+const nodegit = require("../");
+const path = require("path");
 
-const getGitId = async () => {
-  const gitId = await fs.readFile('.git/HEAD', 'utf8');
-  if (gitId.indexOf(':') === -1) {
-    return gitId;
-  }
-  const refPath = '.git/' + gitId.substring(5).trim();
-  return await fs.readFile(refPath, 'utf8');
-};
-async function test(){
-const gitId = await getGitId();
-}
+// This example opens a certain file, `README.md`, at a particular commit,
+// and prints the first 10 lines as well as some metadata.
 
-test();
-console.log(gitId)
-console.log('here');
+(async () => {
+  const repo = await nodegit.Repository.open(path.resolve(__dirname, "../.git"));
+  const commit = await repo.getCommit("528cebde981ae1a08c1f14e3c4fcf67d5ce5ba1e");
+  const entry = await commit.getEntry("README.md");
+  const blob = await entry.getBlob();
+  
+  console.log(entry.name(), entry.sha(), blob.rawsize() + "b");
+  console.log("========================================================\n\n");
+  const firstTenLines = blob.toString().split("\n").slice(0, 10).join("\n");
+  console.log(firstTenLines);
+  console.log("...");
+})();
 
 
 // var Git = require( 'nodegit' );
